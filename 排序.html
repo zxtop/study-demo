@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul,li{list-style: none;}
+	</style>
+</head>
+
+<body>
+	<div id="box">
+		<ul>
+			<li>
+				<span>1</span>
+				<input type="button" value="↑" class="up">
+				<input type="button" value="↓" class="down">
+				<input type="button" value="删除" class="delete">
+			</li>
+			<li>
+				<span>2</span>
+				<input type="button" value="↑" class="up">
+				<input type="button" value="↓" class="down">
+				<input type="button" value="删除" class="delete">
+			</li>
+			<li>
+				<span>3</span>
+				<input type="button" value="↑" class="up">
+				<input type="button" value="↓" class="down">
+				<input type="button" value="删除" class="delete">
+			</li>
+			<li>
+				<span>4</span>
+				<input type="button" value="↑" class="up">
+				<input type="button" value="↓" class="down">
+				<input type="button" value="删除" class="delete">
+			</li>
+			<li>
+				<span>5</span>
+				<input type="button" value="↑" class="up">
+				<input type="button" value="↓" class="down">
+				<input type="button" value="删除" class="delete">
+			</li>
+			<li>
+				<span>6</span>
+				<input type="button" value="↑" class="up">
+				<input type="button" value="↓" class="down">
+				<input type="button" value="删除" class="delete">
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+	window.onload=function(){
+		var box=document.getElementById('box');
+		var oUl=box.getElementsByTagName('ul')[0];
+		var arr=[];
+		// console.log(lis)
+		update();
+		oUl.onclick=function(e){
+			e=e||window.event;
+			target=e.target||e.srcElement;
+
+			if(target.className=='up'){
+				if(target.parentNode.index > 0 ){
+					oUl.insertBefore(arr[target.parentNode.index],arr[target.parentNode.index-1]);
+					update();
+				}else{
+					oUl.removeChild(arr[target.parentNode.index])
+					oUl.appendChild(arr[target.parentNode.index])
+					update();
+				}
+			}
+
+			if(target.className=='down'){
+				if(target.parentNode.index<arr.length-1){
+					oUl.insertBefore(arr[target.parentNode.index+1],arr[target.parentNode.index]);
+					update();
+				}else{
+					alert('到底了')
+				}
+			}
+
+
+			if(target.className=='delete'){
+					oUl.removeChild(arr[target.parentNode.index])
+					
+				
+			}
+		}
+
+		function update(){
+			var lis=box.querySelectorAll('li');
+			arr.length=0;
+			for(var i=0;i<lis.length;i++){
+				arr[i]=lis[i]
+				arr[i].index=i;
+			}
+		}
+		
+	}
+</script>
+</body>
+</html>

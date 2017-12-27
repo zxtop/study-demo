@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        继承：
+        1.保留父级的属性和方法，子并有自己的属性或者方法
+
+        属性的继承：父构造函数.call(this);
+        方法的继承：
+     -->
+     <script>
+         function Creatperson(name,age){
+            this.name=name;
+            this.age=age;
+         }
+
+         Creatperson.prototype.showname=function(){
+             alert (this.name);
+         }
+         var p1=new Creatperson('zhangxing','25');
+         p1.showname();
+
+         function Creatson(name,age,made){
+             Creatperson.call(this,name,age)
+             this.made=made;
+         }
+       
+         Creatson.prototype=Creatperson.prototype;
+         Creatson.prototype.showage=function(){
+             alert(this.age)
+         }
+         var p2=new Creatson('zhangqi','26','yanyau');
+         p2.showage();
+         p2.showname();
+
+     </script>
+</body>
+</html>

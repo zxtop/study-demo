@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        拷贝继承：通用型，有无new的时候都可以
+        类似继承：new构造函数
+        原型继承：无new的对象
+        
+        
+         */
+        // 拷贝继承
+/*         function Creatson(name,age,made){
+             Creatperson.call(this,name,age)
+             this.made=made;
+         }
+       
+        //  Creatson.prototype=Creatperson.prototype;
+        extend(Creatson.prototype,Creatperson.prototype)
+ */
+
+        //  类似继承  其属性继承同拷贝继承属性一样
+        Bbb.prototype=new Aaa();
+        Bbb.prototype.constructor=Bbb;
+
+        var F=function(){};
+        F.prototype=Aaa.prototype;
+        Bbb.prototype=new F();
+        Bbb.prototype.constructor=Bbb;
+
+
+        // 原型继承
+         var a={
+             name:'小明'
+         }
+         function cloneobj(obj){
+             var F=function(){};
+             F.prototype=obj;
+             return new F();
+         }
+
+         b=cloneobj(a);
+         
+
+
+
+    </script>
+</body>
+</html>

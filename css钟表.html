@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" id="css">
+		.box{width: 200px;height: 200px;border:2px solid #000;border-radius: 50%;margin: 100px auto;position: relative;}
+		ul{margin: 0px;padding: 0px;list-style: none;height: 200px;position: relative;}
+		ul li{width: 2px;height: 6px;background: #000;position: absolute;left: 99px;top: 0px;-webkit-transform-origin:center 100px;}
+/*		ul li:nth-of-type(1){-webkit-transform:rotate(6deg);}
+		ul li:nth-of-type(2){-webkit-transform:rotate(12deg);}
+		ul li:nth-of-type(3){-webkit-transform:rotate(18deg);}
+		ul li:nth-of-type(4){-webkit-transform:rotate(24deg);}
+		ul li:nth-of-type(5){-webkit-transform:rotate(30deg);}
+		ul li:nth-of-type(6){-webkit-transform:rotate(36deg);}
+		ul li:nth-of-type(7){-webkit-transform:rotate(42deg);}
+		ul li:nth-of-type(8){-webkit-transform:rotate(48deg);}
+		 */		
+		ul li:nth-of-type(5n+1){height: 12px}
+		#hou{width: 6px;height: 45px;background: #000;position: absolute;left: 97px;top: 55px;-webkit-transform-origin:bottom; }
+		#min{width: 4px;height: 65px;background: #ccc;position: absolute;left: 98px;top: 35px;-webkit-transform-origin:bottom; }
+		#sec{width: 2px;height: 80px;background: red;position: absolute;left: 99px;top: 20px;-webkit-transform-origin:bottom; }
+		#ico{width: 20px;height: 20px;background: #000;border-radius: 50%;position: absolute;left: 90px;top: 90px;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+		<!-- 
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		 -->		
+		 </ul>
+		<div id="hou"></div>
+		<div id="min"></div>
+		<div id="sec"></div>
+		<div id="ico"></div>
+	</div>
+	<script type="text/javascript">
+	
+			var oUl=document.querySelector('ul');
+			var hou=document.getElementById('hou');
+			var min=document.getElementById('min');
+			var sec=document.getElementById('sec');
+			var css=document.getElementById('css');
+			var ali='';
+			var scss='';
+			var timer=null;
+			for(var i=0;i<60;i++){
+				scss+='ul li:nth-of-type('+(i+1)+'){-webkit-transform:rotate('+i*6+'deg);}'
+				ali+='<li></li>'
+			}
+			oUl.innerHTML=ali;
+			css.innerHTML+=scss;
+
+			clearInterval(timer)
+			timer=setInterval(function(){
+				var oDate=new Date();
+				var ihou=oDate.getHours()+isec/60;;
+				var imin=oDate.getMinutes()+isec/60;
+				var isec=oDate.getSeconds();
+
+				sec.style.WebkitTransform="rotate("+isec*6+"deg)";
+				min.style.WebkitTransform="rotate("+imin*6+"deg)";
+				hou.style.WebkitTransform="rotate("+ihou*30+"deg)";
+			},1000)
+			
+	
+	</script>
+</body>
+</html>

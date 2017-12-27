@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+/*div{
+	padding: 100px;
+}	*/
+*{
+	margin: 0;
+	padding: 0;
+}
+#div1{
+	background: red;
+	width:100px;
+	height:100px;
+	margin-left: 50px;
+	position: relative;
+	border: 10px solid #000;
+}
+#div2{
+	background: blue;
+	position: relative;
+	width:60px;
+	height:60px;
+	top:20px;
+	left:30px;
+	border: 10px solid #000;
+}
+#div3{
+	width:30px;
+	height:30px;
+	background: yellow;
+	position: absolute;
+	top:20px;
+	border: 1px solid #000;
+	left:0;
+	transition:1s left;
+}
+</style>
+</head>
+<body>
+	<input type="button" name="" id="btn" value="点击就走" />
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+<script type="text/javascript">
+	window.onload=function(){
+		var div3=document.getElementById('div3');
+		var btn=document.getElementById('btn');
+		var divb=parseInt(getComputedStyle(div3).borderLeftWidth);//获取border的大小，兼容性不是很好
+		btn.onclick=function(){
+			var dis=0;
+			var elem=div3
+		while(elem){//如果有这个元素就会走循环
+			dis += elem.offsetLeft +parseInt(getComputedStyle(elem).borderLeftWidth);
+			elem = elem.offsetParent;//第一次计算之后，elem就变成了div2
+			// alert(dis);
+		}
+		dis-=divb;
+			div3.style.left=-dis+'px';
+			console.log(dis);
+		}
+	}
+</script>
+</body>
+</html>

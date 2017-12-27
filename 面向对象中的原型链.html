@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        什么是原型链：
+        原型链是 实例对象与原型之间的连接，叫做原型链；_proto_
+        原型链的最外层：object.prototype;
+     -->
+     <script>
+         function Aaa(){
+            // this.num=20;
+         }
+        //  Aaa.prototype.num=10;
+         Object.prototype.num=30;
+         var a1=new Aaa();
+         alert(a1.num);
+     </script>
+</body>
+</html>

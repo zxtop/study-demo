@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText=document.getElementById('text1');
+			var oul=document.getElementById('ul1');
+			oText.onkeyup=function(ev){
+				var ev=ev||event;
+				if(oText.value!=''){
+					if(ev.keyCode==13&&ev.ctrlKey){
+						var li=document.createElement('li');
+						li.innerHTML=this.value;
+						if(oul.children[0]){
+							oul.insertBefore(li,oul.children[0])
+						}else{
+							oul.appendChild(li);
+						}
+						
+						
+					}
+				}
+			}
+		}
+	</script>
+	<input type="text" name="" id="text1">
+	<ul id="ul1"></ul>
+</body>
+</html>

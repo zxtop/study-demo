@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{width: 100px;height: 100px;background: red;position: absolute;}
+        #div1{left: 0px;top: 0px;}
+        #div2{background: yellow;left: 110px;top: 0px;}
+        #div3{background: blue;left: 210px;top: 0px;}
+        #div4{background: green;left: 310px;top: 0px;}
+        
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <!-- 
+        组件开发：多组对象，像兄弟之间的关系（代码复用的一种形式）
+        当参数不写的时候会报错--问题1；
+        问题2：当参数多的情况下，写或者不写会出现顺序问题；
+     -->
+    <script>
+        window.onload=function(){
+            var dl=new Drag();
+            dl.init({
+                id:'div1'
+            });
+
+            var d2=new Drag();
+            d2.init(
+            {
+                id:"div2",
+                toDown:function(){
+                document.title='hello'
+                }
+            }    
+            )
+
+            var d3=new Drag();
+            d3.init({
+                id:"div3",
+                toDown:function(){
+                document.title='妙味'
+            },toUp:function(){
+                document.title='课程'
+            }
+            })
+            var d4=new Drag();
+            d4.init({
+                id:"div4",
+                toUp:function(){
+                document.title='抬起'
+            }
+            })
+
+        }
+        function Drag(){
+            this.obj=null;
+            this.disX=0;
+            this.disY=0;
+            this.setting={
+                toDown:function(){},
+                toUp:function(){}
+            }
+        }
+
+        Drag.prototype.init=function(options){
+            var This=this;
+            
+            this.obj=document.getElementById(options.id);
+            extend(this.setting,options);
+            this.obj.onmousedown=function(ev){
+                var ev=ev||window.event;
+                This.fnDown(ev);
+                This.setting.toDown();
+
+                document.onmousemove=function(ev){
+                    var ev=ev||window.event;
+                    This.fnMove(ev);
+                    
+                }
+
+                document.onmouseup=function(){
+                    This.fnUp();
+                    This.setting.toUp();
+                };
+                return false;
+
+            }
+        }
+        Drag.prototype.fnDown=function(ev){
+            this.disX = ev.clientX - this.obj.offsetLeft;
+            this.disY = ev.clientY - this.obj.offsetTop;
+              
+        }
+        Drag.prototype.fnMove=function(ev){
+            this.obj.style.left=ev.clientX-this.disX+'px';
+            this.obj.style.top=ev.clientY-this.disY+'px';
+
+        }
+        Drag.prototype.fnUp=function(){
+            document.onmouseup=null;
+            document.onmousemove=null;
+        }
+
+   
+
+        function extend(obj1,obj2){
+            for(var attr in obj2){
+                obj1[attr]=obj2[attr]
+            }
+        }
+
+
+    </script>
+</body>
+</html>

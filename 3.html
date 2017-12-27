@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript" src='1.js'></script>
+<script type="text/javascript">
+// window.onload=function(){}
+
+
+/*	alert(sum(10,2,3,'+'));
+	function sum(a,b,c,str){
+		 var n=arguments[0];
+		 if(str=='+'){
+
+			for(var i=0;i<arguments.length-1;i++){
+				n+=arguments[i];
+			}
+
+			return n;
+
+		 }else if(str=='-'){
+
+			for(var i=1;i<arguments.length-1;i++){
+				n-=arguments[i];
+			}
+
+			return n;
+		 }
+
+	}*/
+
+
+
+
+/*$(function(){
+	$('btn').onclick=function(){
+		// alert(getComputedStyle($('div1')).width);// ie 6.7.8不兼容   获取浏览器计算之后的样式
+		// alert($('div1').currentStyle.width);
+
+		alert(getStyle($('div1'),'width'));
+	}
+})
+*/
+// window.onload=function(){}
+/*	var abtn=document.getElementsByTagName('input');
+	var arr=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg']
+	var bj=document.body;
+	var num=0;
+	var timer=null;
+	abtn[0].onclick=function(){
+		clearInterval(timer)
+		timer=setInterval(function(){
+		bj.style.background='url('+arr[num]+')';
+		num++;
+		num=num%arr.length;
+		},100)
+
+	}
+	abtn[1].onclick=function(){
+		clearInterval(timer);
+	}*/
+
+/*	var miaov=document.getElementById('miaov');
+	setTimeout(function(){
+		miaov.style.display='inline-block';
+		setTimeout(function(){
+			miaov.style.display='none';
+		},3000)
+	},2000)*/
+
+$(function(){
+	var qq=$('div1');
+	var title=$('div2');
+	var timer=null;
+	qq.onmouseover=show;
+	qq.onmouseout=hide;
+
+	title.onmouseover=show;
+	title.onmouseout=hide;
+
+	function show(){
+		clearInterval(timer)
+		title.style.display='block';
+	}
+
+	function hide(){
+		timer=setTimeout(function(){
+			title.style.display='none';
+		},1000)
+	}
+
+})
+
+
+</script>
+<!-- <style type="text/css">
+	#div1{width: 200px;height: 200px;background: red;}
+</style> -->
+<!-- <style type="text/css">
+	body{background: url('img/sina.jpg') no-repeat center top;text-align: center;}
+	img{display: none;}
+</style> -->
+
+<style type="text/css">
+	#div1{width: 200px;height: 400px;background: #ccc}
+	#div2{width: 240px;height: 180px;background: #256789;position: absolute;left: 220px;top: 10px;display: none;}
+</style>
+<body>
+<!-- 	<input type="button" name="" id="btn" value="按钮">
+	<div id="div1"></div>
+ -->
+<!--  	
+<input type="button" name="" value="切换背景"> 	
+<input type="button" name="" value="停"> 	 -->
+
+<!-- <img src="img/miaov.jpg" id="miaov"> -->
+
+<div id="div1"></div>
+<div id="div2"></div>
+ </body>
+</html>

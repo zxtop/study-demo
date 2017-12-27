@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        那么之前对象的引用其存在的问题，可以用原型的知识去解决，即：在构造函数的原型上定义公共的方法，让对象来引用同一个内存地址
+        以此来提高性能；
+     -->
+     <script type="text/javascript">
+        function Creatperson(name){
+            this.name=name;
+        }
+        Creatperson.prototype.setname=function(){
+           
+                alert(this.name)
+            
+        }
+        var p1=new Creatperson('zhangxing');
+        var p2=new Creatperson('zhangqi');
+        // alert(p1.setname());
+        // alert(p2.setname());
+        alert(p1.setname==p2.setname);
+
+
+        function 构造函数(){
+            this.属性
+        }
+        构造函数.prototype.方法=function(){
+
+        }
+        var 对象1=new 构造函数();
+        对象1.方法();
+     </script>
+</body>
+</html>

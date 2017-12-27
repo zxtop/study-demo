@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	#box{ 
+		width: 500px;  border: solid 1px #333; padding: 15px; overflow: hidden; position: relative; font-family: "arial, helvetica, sans-serif";
+	}
+#msg{}
+#tip{ 
+	width: 180px; border:  solid #333 1px; background: #f1f1f1; position: absolute; left: 0;top: 0; display: none; padding: 3px; line-height: 15px; height: 90px;}
+
+#box a{}
+
+</style>
+<body>
+		<div id="box">
+			<div id="tip">123</div>
+			<div id="msg">
+				海棠是苹果属（Malus）多种植物和木瓜属（Chaenomeles）几种植物的通称与俗称。代表植物海棠花（学名：Malus spectabilis）和木瓜（学名：Chaenomeles sinensis）都是蔷薇科的灌木或小乔木，为中国著名观赏树种，各地习见栽培。园艺变种有粉红色重瓣者和白色重瓣者。
+				海棠类多为用于城市绿化、美化的观赏花木（虽然其中不乏果实有很高食用价值的品种）。其中许多是著名的观赏植物，如：西府海棠、垂丝海棠、贴梗海棠和木瓜海棠，习称“海棠四品”，是重要的温带观花树木。分布于中国山东、陕西、湖北、江西、安徽、江苏、浙江、广东、广西。
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload=function(){
+				var arr=[
+					{"苹果属":"描述内容啊回答是肯定撒1"},
+					{"木瓜属":"描述内容啊回答是肯定撒2"},
+					{"西府海棠":"描述内容啊回答是肯定撒3"},
+					{"垂丝海棠":"描述内容啊回答是肯定撒4"},
+					{"贴梗海棠":"描述内容啊回答是肯定撒5"},
+					{"木瓜海棠":"描述内容啊回答是肯定撒6"},
+					{"海棠四品":"描述内容啊回答是肯定撒7"},
+					{"陕西":"描述内容啊回答是肯定撒8"}
+				]
+				var arry=[];
+				var box=document.getElementById('box');
+				var tip=document.getElementById('tip');
+				var msg=document.getElementById('msg');
+				var vul=[];
+				// alert(arr[0])
+				for(var i=0;i<arr.length;i++){
+					for(var attr in arr[i]){
+						// alert(attr)
+						// alert(msg.innerHTML.split(attr))
+						arry.push(attr);
+						vul.push(arr[i][attr])
+					}
+				}
+				// alert(vul[0])
+				// alert(arry)
+				for(var i=0;i<arry.length;i++){
+					msg.innerHTML=msg.innerHTML.split(arry[i]).join('<a href="javascript:;">'+arry[i]+'</a>')
+				}
+				// alert(msg.innerHTML)
+				var a=document.getElementsByTagName('a');
+				// alert(a.length)
+				for(var i=0;i<a.length;i++){
+					a[i].index=i;
+					a[i].onmouseover=function(){
+						
+						tip.style.display='block';
+						var tleft,ttop;
+
+
+						var left=this.offsetLeft+(this.offsetWidth/2)-(tip.offsetWidth/2);
+						var top=this.offsetTop-tip.offsetHeight;
+						
+						// left 情况 1.左  2.右  3.居中
+						if(left<=0){
+							tleft=0
+						}else{
+							if(left+tip.offsetWidth>box.offsetWidth)
+							{
+								tleft=box.offsetWidth-tip.offsetWidth;
+							}else{
+								tleft=Math.floor(left);
+							}
+						} 
+						// top 情况1.上  2.下
+						if(top<=0){
+							ttop=this.offsetTop+this.offsetHeight
+						}else{
+							ttop=this.offsetTop-tip.offsetHeight
+						}
+						// alert(arr[i][attr]);
+						// alert(vul[i])
+						// alert(tip.innerHTML)
+						tip.innerHTML=vul[this.index];
+
+
+						tip.style.left=tleft+'px';
+						tip.style.top=ttop+'px'
+					}
+					a[i].onmouseout=function(){
+						tip.style.display='none';
+					}
+
+				}
+			}
+		</script>
+</body>
+</html>

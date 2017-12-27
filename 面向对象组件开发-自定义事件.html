@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        自定义事件：主要是跟函数有关系， 就是让函数能够具备事件的某些特性
+        自定义事件在面向对象中有利于多人协作；
+     -->
+     <div id="div">div</div>
+     <span id="span">span</span>
+     <script>
+         window.onload=function(){
+            var oDiv=document.getElementById("div");
+            var oSpan=document.getElementById("span");
+
+            bindEvent(oDiv,'click',function(){
+                alert("a");
+            })
+            bindEvent(oDiv,'click',function(){
+                alert("b");
+            })
+
+            bindEvent(oSpan,'show',function(){
+                alert("我是自定义了事件show,调用firEvent直接执行")
+            })
+            // 自定义一个事件名字为show,那么我们要写一个函数来调取
+            fireEvent(oSpan,'show');
+            // 那么用fireEvent怎么去函数bindEvent里面直接找到并触发呢？
+            
+
+
+             
+         }
+
+
+         function bindEvent(obj,event,fn){
+
+            // obj  一座楼
+            // event  书架
+            // fn:需要找的书
+
+            // 连接
+            obj.lisenters=obj.lisenters||{};
+            obj.lisenters[event]=obj.lisenters[event]||[];
+            obj.lisenters[event].push(fn);
+
+
+
+                if(obj.addEventListener){
+                    obj.addEventListener(event,fn,false)
+                }else{
+                    obj.attachEvent('on'+event,fn)
+                }
+         }
+
+         function fireEvent(obj,event){
+            // 那么我就去obj.lisenters[event]里遍历出来那么本书（fn）就好了；  主动触发自定义事件
+            for(var i=0;i<obj.lisenters[event].length;i++){
+                obj.lisenters[event][i]();//执行自定义事件的函数行为
+            }
+         }
+
+
+
+     </script>
+
+</body>
+</html>

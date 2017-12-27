@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    
+</head>
+<body>
+    <!-- v-html 绑定纯html -->
+    <!-- v-bind:属性  绑定属性 -->
+    <div id="app" >
+        <p v-html='name'>{{name}}</p>
+        <a v-bind:href="link">baidu</a>
+        <button :disabled='dis_true'>按钮1</button>
+        <button :disabled='dis_false'>按钮2</button>
+        <!-- <p>{{num+2}}</p> 支持加减运算 -->
+        <p>{{ok?'阔以':'buk'}}</p>
+        <a :href="link+'.com'">字符串的拼接</a>
+    </div>
+    <script>
+        let app=new Vue({
+            el:'#app',
+            data:{
+                name:'<strong>前端开发</strong>',
+                link:'http://www.baidu',
+                dis_true:true,
+                dis_false:false,
+                num:2,
+                ok:true
+            }
+        })
+
+        // v-bind:href   简写 :href;
+        // 注意，当渲染的属性是布尔类型时候，不是简单的将其渲染，而是当属性为false的时候，属性会被移除；即dom中没有这个属性；
+        // 也支持javascript表达式
+
+
+    </script>
+</body>
+</html>

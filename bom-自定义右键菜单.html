@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{width: 100px;height: 300px;border:1px solid red;display: none;position: absolute;}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			document.oncontextmenu=function(ev){
+				var ev=ev||event;
+
+				oDiv.style.display='block';
+				oDiv.style.left=ev.clientX+'px';
+				oDiv.style.top=ev.clientY+'px';
+				return false;
+			}
+			document.onclick=function(){
+				oDiv.style.display='none'
+			}
+		}
+	</script>
+	<div id="div1"></div>
+</body>
+</html>

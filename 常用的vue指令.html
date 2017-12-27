@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+        <div id="app">
+            <p v-text="msg"></p>
+            <p v-html='name'></p>
+            <p v-show='s_true'>我是显示的block</p>
+            <p v-show='s_fale'>我是隐藏的none</p>
+            <p v-if='s_true'>v-if显示</p>
+            <p v-else>我是else</p>
+            <p v-if='s_fale'>v-if显示</p>
+
+        </div>
+ 
+    <script>
+        // v-text 指令 更新标签包含的文本，和双大括号一样
+        //v-html 标签也会被渲染出来
+        //v-show 控制元素 display css的
+        //v-if 和v-show 相似  不同的是v-if为false的不被渲染，被注释所替代
+        //v-else 是和v-if成对出现，要求前一个兄弟节点必须要使用v-if指令 
+        let app=new Vue({
+            el:"#app",
+            data:{
+                msg:'hello zhangxing',
+                name:'<strong>加粗</strong>',
+                s_fale:false,
+                s_true:false
+            }
+        })
+   </script>
+</body>
+</html>

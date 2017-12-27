@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style type="text/css">
+
+			ul,li{ padding: 0; margin: 0;}
+			#box { width: 300px; }
+			#box .show{ display: block;}
+			#box .hide{ display: none;}
+			#box  h3{ border-bottom: 1px solid #333; color: #333; text-align: center; margin: 0 0 0px 0; cursor: pointer;background: #99CCFF; color: #fff;}
+			#box .curr { background: #99CC66; color: #fff;;} 
+			#box ul li .curr{background: #FF9966; color: #fff;}
+			#box ul li  ul li { background: #6666CC; border-bottom: 1px solid #333;}
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<ul id="box">
+			<li>
+				<h3>第一季</h3>
+				<ul class="hide">
+					<li>
+						<h3>[1]</h3>
+					</li>
+					<li>
+						<h3>[2]</h3>
+						<ul class="hide">
+							<li>A</li>
+							<li>B</li>
+							<li>C</li>
+						</ul>
+					</li>
+					<li>
+						<h3>[3]</h3>
+					</li>
+					<li>
+						<h3>[4]</h3>
+						<ul class="hide">
+							<li>%1</li>
+							<li>%2</li>
+							<li>%3</li> 
+						</ul>
+					</li>
+					<li>
+						<h3>[5]</h3>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第二季</h3>
+				<ul class="hide">
+					<li>
+						<h3>[A]</h3>
+					</li>
+					<li>
+						<h3>[B]</h3>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第三季</h3>
+				<ul class="hide">
+					<li>
+						<h3>[第一章]</h3>
+					</li>
+					<li>
+						<h3>[第二章]</h3>
+					</li>
+					<li>
+						<h3>[第三章]</h3>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第四季</h3>
+				<ul class="hide">
+					<li>
+						<h3>[①]</h3>
+					</li>
+					<li>
+						<h3>[②]</h3>
+					</li>
+					<li>
+						<h3>[③]</h3>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>第五季</h3>
+<!-- 				<ul class="hide">
+				<li>
+					<h3>[Ⅰ]</h3>
+				</li>
+				<li>
+					<h3>[Ⅱ]</h3>
+				</li>
+				<li>
+					<h3>[Ⅲ]</h3>
+				</li>
+				
+			</ul>
+			 -->			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var box=document.getElementById('box');
+			var lis=box.getElementsByTagName('li');
+			for(var i=0;i<lis.length;i++){
+				lis[i].children[0].ele=lis[i].children[1];
+				lis[i].children[0].onclick=function(){
+					if(!this.off){
+						this.ele.style.display='block';
+						this.off=!this.off;
+					}else{
+						this.ele.style.display='';
+						this.off=!this.off;
+					}
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+            面向对象的编程  简称oop
+            特点：抽象（抽象是抓住问题的核心，相同属性和方法的集合体）
+                  封装 （指的是只能通过对象来调用其属性或者方法）
+                  继承（继承相同的问题，但本身有区别公共的问题）
+                  多态  待理解
+        */ 
+
+        // 对象是由属性和方法组成
+        // var obj={}; 和下面的定义一样性质
+        var obj=new Object();
+        obj.name='zhangxing';
+        obj.setName=function(){
+            alert(this.name)
+        }
+        // document.onclick=obj.setName();
+        document.onclick=obj.setName;
+    </script>
+</body>
+</html>

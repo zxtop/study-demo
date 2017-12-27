@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	div{width: 100px;height: 100px;background: red;border:10px solid #ccc;padding: 10px;position: absolute;}
+</style>
+<body>
+	<div id="div"></div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var div=document.getElementById('div');
+			// alert(div.clientWidth);
+			console.log(div.offsetWidth,div.clientWidth);
+			var dW=document.documentElement.clientWidth;
+			var iW=div.offsetWidth;
+			var dH=document.documentElement.clientHeight;
+			var iH=div.offsetHeight;
+			console.log(dW);
+			div.style.left=(dW-iW)/2+'px';
+			div.style.top=(dH-iH)/2+'px';
+		}
+	</script>
+</body>
+</html>

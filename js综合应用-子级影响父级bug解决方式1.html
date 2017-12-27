@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{width: 100px;height: 100px;background: red;}
+        #div2{width: 50px;height: 50px;background: yellow;}
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <script>
+        // 子级影响父级bug的解决方式
+        /* 
+            1.js解决方式  如下  
+            onmouseenter onmouseleave ( 子级不会影响到父级 )
+
+            //最早 ie  firefox  chrome  , 做兼容非常的麻烦 浏览器可能会有兼容问题
+         */
+        window.onload=function(){
+            var oDiv1=document.getElementById('div1');
+            oDiv1.onmouseenter=function(){
+                document.title+='1'
+            }
+            oDiv1.onmouseleave=function(){
+                document.title+='2'
+            }
+        }
+    </script>
+</body>
+</html>

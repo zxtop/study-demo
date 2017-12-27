@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">	
+		body{font-size: 60px;}
+		img{display: inline-block;}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var odiv=document.getElementById('div1');
+			var aimg=document.getElementsByTagName('img');
+			var tm=null;
+			go();
+			setInterval(function(){
+				go();
+			},1000)
+
+			function go(){
+				var time=new Date();
+				var hour=time.getHours();
+				var minutes=time.getMinutes();
+				var seconds=time.getSeconds();	
+				str='';
+				str=tuo(hour)+tuo(minutes)+tuo(seconds);
+				odiv.innerHTML=str;
+
+				for(var i=0;i<str.length;i++){
+					aimg[i].src='images/'+str.charAt(i)+'.JPG';
+				}
+			}
+
+
+			function tuo(n){
+				return n<10 ? '0'+n : ''+n;
+			}
+		}
+	</script>
+	<div id="div1"></div>
+	<img src="images/0.JPG">
+	<img src="images/0.JPG">
+	<img src="images/0.JPG">
+	<img src="images/0.JPG">
+	<img src="images/0.JPG">
+	<img src="images/0.JPG">
+	
+</body>
+</html>

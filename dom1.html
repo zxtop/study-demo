@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul li{width: 50px;background: red;height: 50px;margin-top:10px;transition: all 0.5s}
+
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var ul=document.getElementById('ul');
+			// var lis=ul.childNodes;
+			var lis=ul.children;
+			document.onclick=function(){
+				// alert(lis.length)
+				// for(var i=0;i<lis.length;i++){
+				// 	if(lis[i].nodeType==1){
+				// 		lis[i].style.width='300px'
+				// 	}
+				// }
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.width="300px"
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

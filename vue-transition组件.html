@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
+    <style>
+        #app{width:400px;height: 400px;border:1px solid #efefef;box-shadow: 2px 2px 10px #ccc;margin: 0 auto;position: relative}
+        button{width: 10%;height: 35px;line-height: 35px;box-sizing: border-box;border-radius: 4px;background:red;color: #fff;border: none;margin: 0 auto;margin-top: 50px;}
+        .container{width: 200px;height: 200px;border:1px solid #efefef;box-shadow: 5px 5px 10px #ccc;margin: 0 auto;margin-top: 20px;}
+        .box{width: 200px;height: 200px;background: #000;opacity: 1;margin-left: 0px;}
+        .box-enter-active,.box-leave-active{transition: all 0.8s;}
+        .box-enter{opacity: 0;margin-left: 200px;}
+        .box-leave-active{opacity: 0;margin-left: 200px;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show">切换</button>
+        <div class="container">
+            <transition name="box">
+                <div class="box" v-show="showBox"></div>
+            </transition>
+            
+        </div>
+
+    </div>
+    <script>
+        let app=new Vue({
+            el:"#app",
+            data:{
+                showBox:true
+            },
+            methods:{
+                show(){
+                    this.showBox=(!this.showBox)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

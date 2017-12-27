@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        它有两大优点，一个是它的状态存储是响应式的，
+        另一个是要不能随意修改Vuex的状态，必须按照它的规矩来办事。最后也了解了它有适用和不适用的业务场景。
+
+        创建仓库Store
+
+        const store=new Vuex.Store({});
+
+        核心：State
+
+        Vuex的作用类似全局对象，没错，Vuex 使用单一状态树，
+        用一个对象State包含了整个应用层级的所有状态，你可以理解为这些状态就是一堆全局变量和数据。
+
+        const store=new Vuex.Store({
+            state:{
+                count:5
+            }
+        })
+
+        假设我们有一个全局状态count的值为5。
+        那么，我们就可以将其定义为 state 对象中的key和value，作为全局状态供我们使用。
+
+        state 中的状态被各个组件关联着，在开发调试过程中，我们可以结合vue-devtool工具，
+        可以清晰地看到整个应用的数据，非常方便。
+
+        但如果你使用的还是传统的方法，定义一个全局变量来管理这些全局数据，那么就非常不合理
+        不但不便于调试，而且全局变量容易造成全局污染等问题。
+
+
+        核心：Getters
+
+        还记得Vue中的计算属性computed吗？当我们需要在data的基础上再派生一些状态的时候，就会使用computed来实现。
+
+        同样，当我们需要从 state 中派生出一些状态的时候，就会使用到 getters ，你可以将 getters 理解 state 的计算属性。
+
+        getters 接受 state 作为其第一个参数：
+
+        const store = new Vuex.Store({
+            //state存储应用层的状态
+            state:{
+               count:5  //总数：5
+             },
+             //派生出来的状态
+            getters:{
+               //ES6 的箭头函数语法
+             newCount:state => state.count * 3
+             }
+          });
+
+          假设我们要在state.count的基础上派生出一个新的状态newCount出来，
+          就适合使用我们的 getters ，上面说我们使用了ES6的箭头函数语法。
+
+          //ES6 箭头函数语法
+          newCount:state => state.count * 3,
+         
+          //相当于
+         
+          //传统语法
+          newCount:function (state ) {
+             return state.count * 3;
+          }
+
+          核心：Mutations
+
+          Vuex相比传统的全局变量有两个优势，其中一个是Vuex中的状态不能随意修改
+          ，要修改必要按照Vuex提供的方式才能修改。要用Vuex，咱就得听它的
+
+          Vuex给我们提供修改仓库 store 中的状态的唯一办法就是通过提交mutation。
+          我们来看看如何定义一个mutation，它和上面的 getters ，会接受 state 作为第一个参数：
+
+          const store = new Vuex.Store({
+            //state存储应用层的状态
+            state:{
+                count:5  //总数：5
+            },
+            //更改store状态的唯一途径
+            mutations:{
+                increment(state){
+                    state.count ++;
+                }
+            }
+         });
+
+
+         我们再 mutations 中定义了一个叫increment的函数，函数体就是我们要进行更改的地方，可以看到，
+         我们只是简单地对 state 中的count进行了自增运算。
+
+         非常简单，Vuex要求我们要想通过 mutations 更改内容，就必须提交mutation，语法如下
+         //提交一个名为increment的mutation
+        store.commit('increment');
+
+        我们再提交commit 时候，字符串参数increment,就是对应在 mutations 中的increment。
+ 
+        此外，store.commit( ) 还接受其他额外的参数，比如：
+          
+        //更改store状态的唯一途径
+        mutations:{
+           increment(state,n){
+               state.count += n;
+           }
+        }
+        //...
+        store.commit('increment',10);
+
+        我们在提交的时候额外传了参数10，只要在定义 mutations 的时候定义与之相对应的形参就可以处理了。
+          
+          
+</body>
+</html>

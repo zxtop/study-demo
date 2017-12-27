@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        面向对象的拷贝继承，把对象里面的属性或者函数拷贝一份放到另一个对象中
+     -->
+     <script>
+
+
+         var a=[1,2,3];
+        //  var b=a;
+        var b=[];
+         b.push(4);
+        //  alert(a);//1,2,3,4
+
+// 为了解决以上对象引用的问题，采用for in 复制的方法解决
+        for(var attr in a){
+            b[attr]=a[attr]
+        }
+        alert(a);
+
+        // 封装起来
+        function extend(obj1,obj2){
+            for(var attr in obj2){
+                obj1[attr]=obj2[attr];
+            }
+        }
+
+// 以此来解决之前继承里存在的问题
+function Creatperson(name,age){
+            this.name=name;
+            this.age=age;
+         }
+
+         Creatperson.prototype.showname=function(){
+             alert (this.name);
+         }
+         var p1=new Creatperson('zhangxing','25');
+         p1.showname();
+
+         function Creatson(name,age,made){
+             Creatperson.call(this,name,age)
+             this.made=made;
+         }
+       
+        //  Creatson.prototype=Creatperson.prototype;
+        extend(Creatson.prototype,Creatperson.prototype)
+         Creatson.prototype.showage=function(){
+             alert(this.age)
+         }
+         var p2=new Creatson('zhangqi','26','yanyau');
+         p2.showage();
+         p2.showname();
+         
+
+
+
+     </script>
+</body>
+</html>

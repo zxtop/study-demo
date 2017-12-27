@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        原型：去改写对象下面的公用的属性或者方法，让公用的属性或者方法在内存中只存在一份以此来提高性能；
+        什么是原型
+        原型：相当于css中的class  是公共使用的方法或者属性
+        普通方法：相当于css中的style
+     -->
+     <script>
+        //  例如，创建一个数组方法，来计算数组中的和
+        var arr=[1,2,3,4,5];
+        arr.sum=function(){
+            var result=0;
+            for(var i=0;i<this.length;i++){
+                result+=this[i];
+            }
+            return result;
+        }
+        alert(arr.sum());
+        // 那么如果还有一个数组要计算其中的数组中的和 呢？
+        // 通常方式是再写一个
+
+
+        var arr2=[2,2,2,2];
+        // arr2.sum=function(){
+        //     var result=0;
+        //     for(var i=0;i<this.length;i++){
+        //         result+=this[i];
+        //     }
+        //     return result;
+        // }
+        // alert(arr2.sum());
+
+
+        // 解决办法，利用原型 propotype arr是new Arry()创建出来的对象，那么
+        Array.prototype.sum=function(){
+            var result=0;
+            for(var i=0;i<this.length;i++){
+                result+=this[i];
+            }
+            return result;
+        }
+        
+        alert(arr2.sum());
+
+     </script>
+</body>
+</html>

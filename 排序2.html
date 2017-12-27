@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul,li{list-style: none;}
+		li{width: 40px;height: 40px;line-height: 40px;color: #fff;text-align: center;}
+	</style>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		var color=['red','blue','pink']
+		var box=document.getElementById('box');
+		var oUl=box.getElementsByTagName('ul')[0];
+		var lis=box.querySelectorAll('li');
+		var btn=document.getElementById('btn');
+		// alert(lis.length)
+		var arr=[];
+		var off=true;
+		for(var i=0;i<lis.length;i++){
+			lis[i].style.background=color[i%color.length];
+			arr[i]=lis[i];
+
+		}
+		btn.onclick=function(){
+			if(off){
+				this.value='升序';
+				off=!off
+
+			}else{
+				this.value='降序';
+				off=!off
+			}
+			arr.sort(function(a,b){
+				a=parseInt(a.innerHTML);
+				b=parseInt(b.innerHTML);
+				return !off?b-a:a-b
+			})
+			for(var i=0;i<arr.length;i++){
+				oUl.appendChild(arr[i])
+			}
+		}
+
+	}
+</script>
+<body>
+	<div id="box">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+		</ul>
+		<input id="btn" type="button"  value="升序"/>
+
+	</div>
+</body>
+</html>

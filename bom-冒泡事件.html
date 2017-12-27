@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{padding: 40px;}
+		#div1{background: yellow}
+		#div2{background: pink;}
+		#div3{background: red;}
+	</style>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		/*
+			事件冒泡：当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window,事件冒泡机制；
+
+		*/
+
+
+
+
+
+		function fn1(){
+			alert(this.id)
+		};
+		oDiv1=document.getElementById('div1');
+		oDiv2=document.getElementById('div2');
+		oDiv3=document.getElementById('div3');
+		oDiv1.onclick=fn1;
+		oDiv2.onclick=fn1;
+		oDiv3.onclick=fn1;
+	}
+</script>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+</body>
+</html>

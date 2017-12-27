@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1{width: 100px;height: 100px;background: red;}
+	</style>
+</head>
+<body style="height: 2000px">
+	<script type="text/javascript">
+	
+	/*
+	ie/chrome : onmousewheel
+		event.wheelDelta
+			上：120
+			下：-120
+		
+	firefox : DOMMouseScroll 必须用addEventListener
+		event.detail
+			上：-3
+			下：3
+			
+	return false阻止的是  obj.on事件名称=fn 所触发的默认行为
+	addEventListener绑定的事件需要通过event下面的preventDefault();
+	*/
+
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			oDiv.onmousewheel=fn;
+			if(oDiv.addEventListener){
+				oDiv.addEventListener('DOMMouseScroll',fn,false);
+			}
+
+
+			function fn(ev){
+				// alert('1')
+				var ev=ev||event;
+				var b=true;
+				if(ev.wheelDelta){
+					b=event.wheelDelta>0?true:false;
+				}else{
+					b=ev.detail<0?true:false;
+				}
+				if ( b ) {
+					this.style.height = this.offsetHeight - 10 + 'px';
+				} else {
+					this.style.height = this.offsetHeight + 10 + 'px';
+				}
+				if (ev.preventDefault) {
+					ev.preventDefault();
+				}
+				
+				return false;
+
+			}
+
+	/*document.oncontextmenu = function() {
+		return false;
+	}*/
+	
+	document.attachEvent('oncontextmenu', function() {
+		return false;
+	});
+	
+	/*document.addEventListener('contextmenu', function(ev) {
+		
+		ev.preventDefault();
+		//return false;
+	});*/
+				
+		}
+	</script>
+	<div id="div1"></div>
+</body>
+</html>

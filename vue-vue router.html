@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.5.3/dist/vue-router.js"></script>
+    <style>
+        #app{width: 1000px;height: 800px;box-shadow: 2px 2px 10px #ccc;margin: 0 auto}
+        .nav{width: 500px;height: 300px;border:1px solid #efefef;box-shadow: 0px 0px 10px #ccc;float: left;}
+        .nav a{width: 100%;line-height: 60px;border-bottom: 1px solid #efefef;display: block;text-align: center;}
+        .content{width: 400px;height:200px;float: right;line-height: 200px;text-align: center;color: #333;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="nav">
+            <!-- <a>简单的vue</a>
+            <a>这是es6</a>
+            <a>这是webpack</a> -->
+                <router-link to="/vue">vue</router-link>
+                <router-link to="/es6">es6</router-link>
+                <router-link to="/webpack">webpack</router-link>
+        </div>
+        <div class="content">
+                <router-view></router-view>
+        </div>
+    </div>
+    <script>
+    const vueComponent = {
+        template:`<div>
+                    这里是《简易vue》教程
+                  </div>`
+      };
+    
+      //2.趣味ES6 对应的视图组件
+      const es6Component = {
+        template:`<div>
+                    这里是《趣味ES6》教程
+                  </div>`
+      };
+    
+      //3.人在职场 对应的视图组件
+      const careerComponent = {
+        template:`<div>
+                    《混口饭吃》与《工资待遇》
+                  </div>`
+      };
+    
+
+       // 创建router实例，定义导航和组件之间的映射关系
+       const router = new VueRouter({
+        routes:[
+        {
+                        path:"/vue",
+                        component:vueComponent
+                    },
+                    {
+                                    path:"/es6",
+                                    component:es6Component
+                                },
+                                {
+                                                path:"/webpack",
+                                             component:careerComponent
+                                             },
+            ]
+        });
+        
+
+
+
+        let app=new Vue({
+            el:"#app",
+            router
+        })
+    </script>
+</body>
+</html>

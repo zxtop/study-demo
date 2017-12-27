@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var inow=new Date();
+		var inew=new Date(2018,10,27,24,56,0)
+		var t=Math.floor((inew-inow)/1000);
+		var str=Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+		alert(str);
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <style>
+        .cont{width: 200px;height: 200px;border:1px solid #ccc;float: left;margin-right: 10px;margin-left: 10px;text-align: center}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <actircle :detaill="item" v-for="item in article"></actircle>
+    </div>
+    <script>
+
+        Vue.component('actircle',{
+            props:['detaill'],
+            template:`<div class="cont">
+            <h5>{{detaill.title}}</h5>
+            <p>{{detaill.author}}</p>
+            <strong>{{detaill.date[0]}}</strong>
+        </div>`
+        })
+
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                article:[
+                    {
+                        title:"这是一篇关于vue的文章1",
+                        author:"作者：张行",
+                        date:[1,2,3]
+                    },
+
+                    {
+                        title:"这是一篇关于vue的文章2",
+                        author:"作者：张行",
+                        date:[1,2,3]
+                    },
+                    {
+                        title:"这是一篇关于vue的文章3",
+                        author:"作者：张行",
+                        date:[1,2,3]
+                    },
+                    {
+                        title:"这是一篇关于vue的文章4",
+                        author:"作者：张行",
+                        date:[1,2,3]
+                    }
+                    
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

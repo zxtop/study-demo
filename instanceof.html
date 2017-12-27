@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        instanceof 方法用来判断 对象实例是否和构造函数在一条原型链上
+     -->
+     <script>
+         function Aaa(){
+
+         }
+         var a=new Aaa();
+         alert(a instanceof Aaa)//true;
+        //  也可以用作判断数据的类型
+        var arr=[];
+        alert(arr instanceof Array); //true;
+     </script>
+</body>
+</html>

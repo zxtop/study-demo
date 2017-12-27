@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 div,#div2 div,#div3 div,#div4 div{width: 300px;height: 300px;border: 1px solid #000;display: none;}
+        input.active{background: red;}
+    </style>
+    <script src="js/jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+    
+    <script>
+
+/**
+	title : 基于JQ的选项卡组件
+	
+	Options : event   delay
+	
+	Methods : nowSel()默认tab索引项目显示   getContent()
+	
+	Events : beforeClick  afterClick  自定义事件  beforeClick在点击之前弹出当前选项卡的内容    afterClick在点击之后弹出当前选项卡的内容
+
+    jQ 中自定义事件的主动触发用trigger();
+*/
+
+//jQ中的主动触发 : trigger()
+
+       
+        $(function(){
+            var tab=new Tab();
+            tab.init('div1',{});
+
+            var tab2=new Tab();
+            tab2.init('div2',{
+                event:'mouseover'
+            });
+
+            var tab3=new Tab();
+            tab3.init('div3',{
+                event:'mouseover',
+                delay:300
+            });
+
+            var tab4=new Tab();
+            tab4.init('div4',{});
+            tab4.nowSel(2);
+            $("#input1").click(function(){
+                // alert("a")
+                alert(tab4.getContent());
+            })
+
+            $(tab4).on('beforeClick',function(){
+                alert(tab4.getContent());
+            })
+
+            $(tab4).on('afterClick',function(){
+                alert(tab4.getContent());
+            })
+
+        });
+
+
+        function Tab(){
+            this.oParent=null;
+            this.ainput=null;
+            this.adiv=null;
+            this.iNow=0;
+            this.settings={
+                event:'click',
+                delay:0
+            }
+        }
+        Tab.prototype.init=function(oParent,opt){
+            this.oParent=$('#'+oParent);
+            this.ainput=this.oParent.find('input');
+            this.adiv=this.oParent.find('div');
+            $.extend(this.settings,opt);
+            this.change();
+        }
+        Tab.prototype.change=function(){
+            var This=this;
+            var timer=null;
+            This.ainput.on(This.settings.event,function(){
+                _this=this;
+                if(This.settings.delay && This.settings.event=='mouseover'){
+                    timer=setTimeout(function(){
+                        show(_this)
+                    },This.settings.delay)
+                }else{
+                    show(this)
+                }
+
+            }).mouseout(function(){
+                clearTimeout(timer);
+            })
+
+
+            function show(obj){
+                $(This).trigger('beforeClick');
+                This.ainput.attr('class','');
+                $(obj).attr('class','active');
+                This.adiv.css("display","none");
+                This.adiv.eq($(obj).index()).css("display","block")
+                This.iNow=$(obj).index();
+                $(This).trigger('afterClick');
+            }
+        }
+
+        Tab.prototype.nowSel=function(index){
+            this.ainput.attr('class','');
+            this.adiv.css("display","none");
+            this.ainput.eq(index).attr('class','active');
+            this.adiv.eq(index).css("display","block")
+            this.iNow=index;
+            
+        } 
+        
+        Tab.prototype.getContent=function(){
+            return this.adiv.eq(this.iNow).html();
+        }
+
+
+
+
+    </script>
+    <!-- http://tangram.baidu.com.magic -->
+
+    <div id="div1">
+        <input class="active" type="button" value="1">
+        <input type="button" value="2">
+        <input type="button" value="3">
+
+        <div class="content" style="display:block">
+            1111111
+        </div>
+        <div class="content" >
+            2222222
+        </div>
+        <div class="content">
+           3333333
+        </div>
+
+    </div>
+
+    <div id="div2">
+            <input class="active" type="button" value="1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+    
+            <div class="content" style="display:block">
+                1111111
+            </div>
+            <div class="content" >
+                2222222
+            </div>
+            <div class="content">
+               3333333
+            </div>
+    
+    </div>
+    <div id="div3">
+            <input class="active" type="button" value="1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+    
+            <div class="content" style="display:block">
+                1111111
+            </div>
+            <div class="content" >
+                2222222
+            </div>
+            <div class="content">
+               3333333
+            </div>
+    
+    </div>
+
+    <div id="div4">
+            <input class="active" type="button" value="1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+    
+            <div class="content" style="display:block">
+                1111111
+            </div>
+            <div class="content" >
+                2222222
+            </div>
+            <div class="content">
+               3333333
+            </div>
+    
+    </div>
+    <input type="button" value="点击" id="input1">
+    
+
+</body>
+
+</html>

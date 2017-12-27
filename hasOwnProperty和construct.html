@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        面向对象的一些属性和方法：
+        hasOwnProterty():看是不是对象自身下面的属性
+        constructor:查看对象的构造函数
+           每个对象都会自动添加constructor属性；
+           for in的时候有些属性是找不到的
+           避免修改constructor属性
+     -->
+     <script>
+/*          var arr=[];
+         arr.num=10;
+
+         Array.prototype.num=1;
+         Array.prototype.num2=3;
+         alert(arr.hasOwnProperty('num'))  true
+         alert(arr.hasOwnProperty('num2')) false
+ */     
+
+/*  function Aaa(){
+
+ }
+ var a=new Aaa();
+ alert(a.constructor);
+ var arr=[];
+ alert(arr.constructor) */
+// 可以用作数组的判断
+//alert(arr.constructor==Array) //true;
+
+// 在每个对象生成的时候都会自动添加constructor 属性，即：
+//Aaa.prototype.constructor=Aaa;
+
+// constructor在构造函数.prototype上，而hasOwnPerperty在Object.prototype上
+// a.hasOwnProperty==object.prototype.hasOwnProperty  //true
+
+
+// 还有一个地方要注意 有时候自己会不经意把constructor给覆盖掉
+
+function Aaa(){
+
+}
+
+/* 
+Aaa.prototype.name='zhangxing';
+Aaa.prototype.age=20;  //这种写法并bu会影响constructor */
+
+// 但是如果这样写：
+/* Aaa.prototype={
+    name:'zhangxing',
+    age:20
+} *///此时就会覆盖，所以要加上constructor:
+
+
+/* Aaa.prototype={
+    constructor:Aaa,
+    name:'zhangxing',
+    age:20
+}
+ */
+
+var a=new Aaa();
+alert(a.constructor);
+//还有一个地方要注意 for in 获取不到系统自带的属性
+Aaa.prototype.name='zhangxing'
+for(var attr in Aaa.prototype){
+    alert(attr)
+}
+
+
+
+</script>
+</body>
+</html>

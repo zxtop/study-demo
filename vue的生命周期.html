@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    
+</head>
+<body>
+    <div id="app" ref='app'>{{name}}</div>
+    <script>
+        let app=new Vue({
+            el:'#app',
+            data:{
+                name:'前端开发'
+            },
+            beforeCreate(){
+                console.log('即将创建');
+                console.log(this.$data);
+                console.log(this.$el);
+            },
+            created(){
+                console.log('创建完毕');
+                console.log(this.$data);
+                console.log(this.$el);
+            },
+            beforeMount(){
+                console.log('即将挂载');
+                console.log(this.$data);
+                console.log(this.$el);
+            },
+            mounted(){
+                console.log('挂载完毕');
+                console.log(this.$data);
+                console.log(this.$el);
+            },
+            // ref属性用于获取dom元素
+            beforeUpdate(){
+                console.log('即将渲染');
+                let name=this.$refs.app.innerHTML;
+                console.log('name'+name);
+            },
+            updated(){
+                console.log('更新成功');
+                let name=this.$refs.app.innerHTML;
+                console.log('name'+name);
+            },
+            beforeDestroy(){
+                console.log('销毁之前');
+            },
+            destroyed(){
+                console.log('销毁成功')
+            }
+
+/*             actived
+            keep-alive组件被激活的时候调用。
+            deactivated
+            keep-alive 组件停用时调用。
+            关于keep-alive组件的激活和停用，我们后面讲到具体案例再介绍，在这里你只需要知道vue提供了keep-alive组件激活和停用的钩子就可以了。
+ */
+
+        })
+    </script>
+</body>
+</html>

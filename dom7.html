@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border="" id="table">
+		<thead>
+			<tr>
+				<th>标题1</th>
+				<th>标题1</th>
+				<th>标题1</th>
+				<th>标题1</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+			</tr>
+			<tr>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+			</tr>
+			<tr>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+				<td>内容1</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>统计1</td>
+				<td>统计1</td>
+				<td>统计1</td>
+				<td>统计1</td>
+			</tr>
+		</tfoot>
+	</table>
+	<script type="text/javascript">
+		window.onload=function(){
+			var box=document.getElementById('table');
+			box.tHead.style.backgroundColor='yellow';
+			box.tBodies[0].style.color='red'
+			box.tFoot.style.border='none';
+			box.rows[1].style.backgroundColor='blue';
+			box.rows[2].cells[1].style.background='pink'
+		}
+	</script>
+</body>
+</html>

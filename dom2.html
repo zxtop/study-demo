@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li><a href="javascript:;">隐藏111</a></li>
+		<li><a href="javascript:;">隐藏222</a></li>
+		<li><a href="javascript:;">隐藏333</a></li>
+	</ul>
+	<script type="text/javascript">
+		window.onload=function(){
+			var ul=document.getElementById('ul');
+			var oa=document.getElementsByTagName('a');
+			alert(oa.length)
+			for(var i=0;i<oa.length;i++){
+				oa[i].onclick=function(){
+					this.parentNode.style.display='none'
+				}
+			}
+		}
+	</script>
+</body>
+</html>

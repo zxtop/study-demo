@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">	
+		body{font-size: 60px;}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var tm=null;
+			go();
+			setInterval(function(){
+				go();
+			},1000)
+
+			function go(){
+				var time=new Date();
+				var year=time.getFullYear();
+				var month=time.getMonth()+1;
+				var day=time.getDate();
+				var week=time.getDay();
+				var hour=time.getHours();
+				var minutes=time.getMinutes();
+				var seconds=time.getSeconds();
+
+				if(week===0) week='星期日';
+				if(week===1) week='星期一';
+				if(week===2) week='星期二';
+				if(week===3) week='星期三';
+				if(week===4) week='星期四';
+				if(week===5) week='星期五';
+				if(week===6) week='星期六';
+					
+				str='';
+				str=year+'年'+tuo(month)+'月'+day+'日'+week+hour+'时'+tuo(minutes)+'分'+tuo(seconds)+'秒';
+				document.body.innerHTML=str;
+			}
+
+			function tuo(n){
+				// if(n<10){return '0'+n}else{return ''+n}
+				return n<10 ? '0'+n : ''+n;
+			}
+		}
+	</script>
+</body>
+</html>

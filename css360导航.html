@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#f9f9f9;}
+#menu{width:50px;height:50px; position:fixed;right:20px; bottom:20px; }
+#menu_list{height:42px;width:42px; position:relative;margin:4px;}
+#menu_list img{ border-radius:21px; position:absolute;left:0;top:0; -webkit-transition:0.5s all ease;}
+#home{width:50px;height:50px;background:url(home.png) no-repeat; border-radius:25px; position:absolute; left:0;top:0; transition:1s;}
+</style>
+
+</head>
+<body>
+<div id="menu">
+	<div id="menu_list">
+    	<img src="prev.png" alt=""/>
+        <img src="open.png" alt="" />
+        <img src="clos.png" alt="" />
+        <img src="full.png" alt="" />
+        <img src="refresh.png" alt="" />
+    </div>
+	<div id="home"></div>
+</div>
+<script type="text/javascript">
+	window.onload=function(){
+		var home=document.getElementById('home');
+		var menu_list=document.getElementById('menu_list');
+		var imgs=menu_list.getElementsByTagName('img');
+		// alert(imgs.length)
+		var off=true;
+		var iR=-150;
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].onclick=function(){
+				this.style.transition='0.3s'
+				this.style.WebkitTransform='scale(2)';
+				this.style.opacity=0.1;
+				addEnd(this,end);
+			}
+		}
+		
+		function end(){
+			this.style.transition='0.1s'
+			this.style.WebkitTransform='scale(1)';
+			this.style.opacity=1;
+		}
+		home.onclick=function(){
+			if(off){
+				for(var i=0;i<imgs.length;i++){
+					var oLt=toLT(iR,90/4*i);
+					imgs[i].style.transition="0.5s"+i*100+"ms";
+					imgs[i].style.left=oLt.l+'px';
+					imgs[i].style.top=oLt.t+'px';
+					imgs[i].style.WebkitTransform='rotate(-720deg)'
+				}
+				this.style.WebkitTransform='rotate(-360deg)';
+			}else{
+				this.style.WebkitTransform='rotate(0deg)';
+				for(var i=0;i<imgs.length;i++){
+					var oLt=toLT(iR,90/4*i);
+					imgs[i].style.transition="0.5s"+(imgs.length-i)*100+"ms";
+					imgs[i].style.left=0+'px';
+					imgs[i].style.top=0+'px';
+					imgs[i].style.WebkitTransform='rotate(0deg)'
+				}
+			}
+			off=!off
+		}
+		function toLT(iR,iDeg){
+			return {l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+
+			// left=Math.round(Math.sin(deg/180*Math.PI)*r);
+			// top=Math.round(Math.cos(deg/180*Math.PI)*r);
+			// return {left,top}
+		}
+
+function addEnd(obj,fn)
+{
+	obj.addEventListener('WebkitTransitionEnd',fn,false);
+	obj.addEventListener('transitionend',fn,false);
+}
+function removeEnd(obj,fn)
+{
+	obj.removeEventListener('WebkitTransitionEnd',fn,false);
+	obj.removeEventListener('transitionend',fn,false);
+}
+	}
+</script>
+</body>
+</html>

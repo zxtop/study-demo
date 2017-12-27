@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{width: 100px;height: 100px;background: red;transition: 1s;margin: 100px auto;}
+		body{height: 600px;border: 1px solid #ccc;}
+		body:hover .box{/*-webkit-transform: skewX(45deg);*//*-webkit-transform: skewY(45deg)*/-webkit-transform:skew(45deg);}
+		ul li{list-style: none;width: 100px;line-height: 30px;background: red;float: left;margin-left: 10px;-webkit-transform:skewX(45deg);}
+		ul li a{color: #fff;display: block;text-align: center;text-decoration: none;-webkit-transform: skewX(-45deg)}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+
+	<ul>
+		<li><a href="#">第一个啦</a></li>
+		<li><a href="#">第一个啦</a></li>
+	</ul>
+</body>
+</html>

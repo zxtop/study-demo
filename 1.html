@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var json={'name':'zhangxing','age':23}
+		var json4={
+			'url':['img1','img2','img3','img4'],
+			'text':['niha','shi','nish','haou']
+		}
+		// var arr=[{name:'abc',age:23},{page:'www',efg:45}]
+		// for(var att in json4){}
+			 // alert(json4[att])
+			 // alert(json4[att].length)
+			for(var i=0;i<json4['url'].length;i++){
+				alert(json4['url'][i])
+			}
+		
+/*		for(var i=0;i<arr.length;i++){
+			for(var att in arr[i]){
+				alert(arr[i][att])
+			}
+		}*/
+		// str='';
+		// num=0;
+		// for(var att in document){
+		// 	str+=num+'.'+document[att]+'<br>';
+		// 	num++;
+		// }
+		// document.body.innerHTML=str;
+		var arr1=['zhangxing','mo','shie','abc']
+		// alert(arr1.push('sdf'))
+		// alert(arr1)
+		// alert(arr1.unshift('zhangxing'))
+		// alert(arr1);
+
+		// alert(arr1.pop('abc'))
+		// alert(arr1)
+
+		// alert(arr1.shift('zhangxing'));
+		// alert(arr1)
+		// alert(arr1.unshift(arr1.pop('abc')));
+		// alert(arr1)
+
+		// alert(arr1.push(arr1.shift('zhangxing')));
+		// alert(arr1);
+
+		var arr2=['TM','钟意','张森','杜鹏','Leo'];
+		// arr2.splice(0,2);
+		// arr2.splice(0,2,'莫涛or钟意')
+		arr2.splice(1,0,'钟意的媳妇')
+
+		// alert(arr2)
+
+		// var arr3=[1,2,3,3,5];
+		// for(var i=0;i<arr3.length;i++){
+		// 	for(var j=i+1;j<arr3.length;j++){
+		// 		if(arr3[i]==arr3[j]){
+		// 			arr3.splice(j,1);
+		// 			j--;
+		// 		}
+		// 	}
+		// }
+		// alert(arr3);
+
+
+		arr4=[5,8,47,8,6,3,2]
+		// alert(arr4.sort(function(a,b){
+		// 	return a-b;
+		// }))
+		arr5=['110px','10px','77px'];
+		// alert(arr5.sort(function(a,b){
+		// 	return parseInt(a)-parseInt(b)
+		// }))
+		// alert(arr5.sort(function(a,b){
+		// 	return Math.random()-0.5
+		// }))
+
+		var x=3;
+		var y=5;
+		// 随机取整 x~y之间的数
+		// alert(Math.round(Math.random()*(y-x)+x));
+
+		// 0~x之间的数
+		// alert(Math.round(Math.random()*x));
+
+		// 1~x之间的数
+		//alert(Math.ceil(Math.random()*x));向上取整；
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.t1{width: 400px;height: 40px;}
+	</style>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		var ainput=document.getElementsByTagName('input');
+		var timer=null;
+		var str='';
+		ainput[2].onclick=function(){
+			clearInterval(timer);
+			
+				setInterval(function(){
+					var inow=new Date();
+					var inew=new Date(ainput[0].value);
+					var t=Math.floor((inew-inow)/1000);
+					if(t>=0){
+						
+						var str=Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+						ainput[1].value=str;			
+					}else{
+						clearInterval(timer)
+						}
+
+				},1000)
+		}
+	}
+</script>
+<body>
+	距离：<input class="t1" type="text" name="" value="November 23,2018 11:11:11"><br><br>
+    还剩：<input class="t1" type="text" name="">
+	<input type="button" name="" value="按钮">
+</body>
+</html>

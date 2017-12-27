@@ -1,0 +1,6 @@
+1.json 用for  in  来遍历，不能用for循环；反之数组都可以；其里面的写法，严格来说是要加引号比
+较严谨，访问其内容的遍历用for in即可；
+
+json={name:'zhangxing',age:23};json={url:['www','sdf'],text:['name','age']}
+
+数组里面可以有json，json里面也阔以包含数组；

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        基本类型的比较  只比较的值是否相同
+        对象的比较  不仅仅是值是否相同，还有引用地址是否一致，什么叫做对象的引用
+        比如 a=[1,2,3]; b=a;这就是对象的引用，但若b.push(4)  那么b和a里面的内容都是1,2,3,4
+     -->
+    <script type="text/javascript">
+        var a=[1,2,3];
+        b=a;
+       // b.push(4);
+        //alert(a==b);// true
+        // 注意 赋值后便不相等，原因是b的内存地址重新变化，内容也是，所以不等，如下：
+        b=[1,2,3,4];
+        alert(b==a);//false;
+
+        // 经过以上的知识了解那么如下的构造函数：
+        function Creatperson(name){
+            this.name=name;
+            this.setname=function(){
+                alert(this.name);
+            }
+        }
+        var p1=new Creatperson('zhangxing');
+        var p2=new Creatperson('zhangqi');
+        p1.setname();
+        p2.setname();
+        //那么 p1.setname()==p2.setname()  是不相等的，虽然方法是一样的，但是创建的对象地址不一样，引用地址不一样，所以不相等
+        // 也因此引出问题，一个构造函数中 多个对象要使用同一个方法当然要创建很多对象来调用其方法，那么内存会被消耗，其解决方法也必然引出，即原型的引出；
+        // 原型：去改写对象下面的公用的属性或者方法，让公用的属性或者方法在内存中只存在一份以此来提高性能；
+
+
+    </script>
+</body>
+</html>

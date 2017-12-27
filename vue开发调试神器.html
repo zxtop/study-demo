@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
+    
+    <style>
+        #app{width: 1000px;margin: 0 auto}
+        .ainput{  display:inline-block ;
+    width:10%;
+    height: 35px;
+    line-height: 35px;
+    margin: 30px auto;
+    box-sizing: border-box;
+    padding-left: 4px;
+    border-radius: 4px;
+    border:1px solid #ccc;
+    outline: 0;
+    box-shadow: 0 0 5px #ccc;}
+    .del{width: 10%;height: 35px;line-height: 35px;box-sizing: border-box;border-radius: 4px;background:red;color: #fff;border: none;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" class="ainput" v-model='augend' @keyup="comput">
+        <span>+</span>
+        <input type="text" class="ainput" v-model='addend' @keyup="comput">
+        <span>=</span>
+        <input type="text" class="ainput" :value="sum">
+        <br>
+        <button class="del" @click="rest">清空数据</button>
+    </div>
+    <script>
+        const app=new Vue({
+            el:"#app",
+            data:{
+                augend:'',
+                addend:'',
+                sum:''
+            },
+            methods:{
+                comput(){
+                    this.sum=Number(this.augend)+Number(this.addend)
+                },
+                rest(){
+                    this.sum=this.addend=this.augend='';
+                    this.$emit('rest')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        什么是工厂方式，就是封装的一个函数，创建对象，然后创建对象的属性和方法，出厂返回对象，像工厂模式所以叫做工厂方式，其实就是函数的封装
+        例如：
+     -->
+     <script type="text/javascript">
+         function creatperson(name){
+             var obj=new Object();
+             obj.name=name;
+             obj.setname=function(){
+                 alert(this.name);
+             }
+             return obj;
+         }
+
+         creatperson('zhangxing').setname();
+     </script>
+</body>
+</html>

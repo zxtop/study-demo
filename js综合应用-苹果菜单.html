@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{overflow: hidden}
+        .box{width: 100%;height: auto;position: absolute;bottom: 0px;text-align: center;overflow-x: hidden}
+        .box img{width: 64px;}
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <img src="images/1.png" alt="">
+        <img src="images/2.png" alt="">
+        <img src="images/3.png" alt="">
+        <img src="images/4.png" alt="">
+        <img src="images/5.png" alt="">
+    </div>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+
+    <script>
+        window.onload=function(){
+            var obox=document.getElementById('box');
+            var aimg=document.getElementsByTagName('img');
+            var ainput=document.getElementsByTagName('input');
+            document.onmousemove=function(ev){
+                var ev=ev||window.event;
+                for(var i=0;i<ainput.length;i++){
+                    var x=aimg[i].offsetLeft+aimg[i].offsetWidth/2;
+                    var y=aimg[i].offsetTop+aimg[i].offsetHeight/2+obox.offsetTop;
+                    // ainput[i].value='x'+x+'y'+y;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

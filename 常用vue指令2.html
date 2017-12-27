@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+
+</head>
+<body>  
+    <div id="app">
+        <div v-for='(item,index) in list'>{{index}}{{item}}</div>
+        <a :href="url">baidu</a>
+        <a v-bind:href='url'>百度</a>
+        <button v-on:click='say'>你好</button>
+
+        <input type="text" v-model='name'>
+        <p v-once>{{name}}</p>
+    
+    </div>
+    <script>
+        //v-for 渲染列表
+        //v-bind 动态绑定dom元素属性
+        //v-on 绑定事件的监听器 配合method使用
+
+        //v-model 双向绑定，实现表单控件和数据的双向bang定；
+
+        //v-once 只渲染一次，后面的数据变化不会再变
+        var app=new Vue({
+            el:'#app',
+            data:{
+                list:['one','two','three'],
+                url:'http://www.baidu.com',
+                name:'sss'
+            },
+            methods:{
+                say(){
+                    // alert('hello')
+                    alert(this.innerHTML)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

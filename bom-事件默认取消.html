@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body style="height: 20000px;">
+	<script type="text/javascript">
+		/*
+事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情
+怎么阻止？
+当前这个行为是什么事件触发的，然后在这个事件的处理函数中使用return false;
+*/
+
+		document.onkeydown=function(){
+			return false;
+		}
+
+		// 取消右键
+		document.oncontextmenu=function(){
+			return false;
+		}
+
+	</script>
+</body>
+</html>

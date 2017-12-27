@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        数字1：{{num1|tolent}}<br>
+        数字2：{{num2|tolent}}<br>
+        数字3：{{num3|tolent}}<br>
+        求和：{{sum|tolent}}
+        <p>{{a}}</p>
+        <button v-on:click='plus'>加1</button>
+    </div>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                num1:23.45,
+                num2:34.599,
+                num3:1234.340,
+                a:0
+            },
+            filters:{//过滤属性
+                tolent(value){
+                    return parseInt(value);
+                }
+            },
+            computed:{ //计算属性
+                sum(){
+                    return this.num1+this.num2+this.num3;
+                }
+            },
+            methods:{//自定义方法
+                plus(){
+                    return this.a++;
+                }
+            },
+            watch:{//暗中观察
+                a(){
+                    console.log('有了新的变化')
+                    console.log(this.a);
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>

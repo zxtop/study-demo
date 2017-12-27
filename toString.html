@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        tostring();系统对象下面都是自带的，自己写的对象都是通过原型链找object下面的
+
+     -->
+     <script>
+/*          var arr=[];
+         alert(arr.toString)
+         alert(arr.toString==Object.prototype.toString)//false;
+
+
+         function Aaa(){
+
+         }
+         var a=new Aaa();
+         alert(a.toString==Object.prototype.toString)
+ */ 
+ 
+         toString();//把对象转成字符串
+
+         var arr=[1,2,3]
+         
+         Array.prototype.toString=function(){
+             return this.join('+')
+         }
+         alert(arr.toString());
+
+         //转换进制
+         var num=255;
+         alert(num.toString(16))//ff
+
+        //  判断数据类型
+        var arr={};
+        alert(Object.prototype.toString.call(arr))//[Object Array]
+        alert(Object.prototype.toString.call(arr)=='[object Array]') //true;
+     </script>
+</body>
+</html>

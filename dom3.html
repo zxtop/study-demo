@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li>123344</li>
+		<li>123344</li>
+		<li>123344</li>
+	</ul>
+	<script type="text/javascript">
+		window.onload=function(){
+			var lis=document.getElementsByTagName('li');
+			lis[0].nextElementSibling.style.background='red';
+			lis[1].previousElementSibling.style.background='yellow'
+			var ul=document.getElementById('ul');
+			console.log(ul.firstElementChild,ul.lastElementChild)
+			// firstElementChild,lastElementChild  浏览器会有兼容性的问题
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+    <style>
+        #app{width: 330px;height: 590px;margin: 0 auto;}
+        #app .app_top{background: #e0e0e0;height: 250px;width: 100%;border: 1px solid #e0e0e0;}
+        .result{font-size: 25px;text-align: right;margin-top: 190px;}
+        .enter{font-size: 18px;text-align: right}
+        .keys{width: 100%;height: auto;border: 1px solid #efefef;background: #f0f0f0;}
+        .ky{display: inline-block;width: 25%;text-align: center;font-size: 18px;line-height: 70px;border-bottom: 1px solid #ccc;cursor: pointer}
+        .ky:last-child{background: #d03000;color: #fff;}
+        .ky:first-child{font-size: 22px;color: #d03000}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="app_top">
+               <div class="result">{{result}}</div>
+            <div class="enter">{{enter===""?0:enter}}</div>
+        </div>
+     
+        <div class="keys">
+            <div class="list">
+                <!-- 键盘区域 -->
+                <keyword :value="item" v-for="item in keys" :class="{'ky':'ky_value'}"></keyword>
+            </div>
+        </div>
+    </div>
+    <script>
+        const store=new Vuex.Store({
+            state:{
+                result:"",//运算的结果
+                enter:""//输入的值
+
+            },
+            // 定义名为calculate的mutation
+            mutations:{
+                calculate(state,value){
+                    if(value==='='){
+                        state.result=eval(state.enter);
+                        state.enter+=value;
+                    }else if(value==='clear'){
+                        state.result=state.enter='';
+                    }else{
+                        state.enter+=value;
+                    }
+                }
+            }
+        })
+
+        // 自定义组件
+        Vue.component('keyword',{
+            props:['value'],
+            template:`
+            <div @click="getKeyboardValue" :data-value="value">{{value}}</div>
+            `,
+            methods:{
+                getKeyboardValue(event){    
+                    //获取按键的值
+                    let value=event.target.dataset.value;
+                    // 通过commit提交mutation
+                    this.$store.commit('calculate',value)
+
+                }
+            }
+        })
+
+
+        // Vuex提供了store选项，允许我们将仓库store引入到根组件，并且此跟组件的所有子组件都可以使用到仓库store，
+        // 而且子组件无需显示的引入。有了这个机制，我们就很方便地将仓库store和vue实例关联起来了。
+        // 这样我们就可以将store引入，且能通过 this.$store 访问到它。
+        let app=new Vue({
+            el:"#app",
+            store,
+            data:{
+                ky_value:true,
+                keys:[
+                'clear', '+', '-', '*',
+                '7', '8', '9', '/',
+                '4', '5', '6', '0',
+                '1', '2', '3', '=',
+                ]
+            },
+            computed:{
+                result(){
+                    //通过this.$store获取仓库的数据result
+                    return this.$store.state.result;
+                },
+                enter(){
+                    return this.$store.state.enter;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

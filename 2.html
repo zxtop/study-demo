@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12章</title>
+</head>
+<style type="text/css">
+	#txt{width: 500px;height: 300px;border:1px solid #ccc;padding-top: 50px}
+	#txt span{background: yellow}
+</style>
+<body>
+<input type="text" name="">
+<input type="button" name="" value="检测">
+<div id="div1">加密：</div>
+
+<div id="txt">
+	<p>
+		<span>
+			妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法
+		</span>
+		<a href="javascript:;">收缩</a>
+	</p>
+</div>
+
+<!-- 
+	<div id="txt">
+		<span>秒</span><span>为</span><span>课</span><span>糖</span>
+	</div>
+	<input type="text" name="" id="val">
+	<input type="button" name="" value="发送" id="btn">
+ -->
+<!-- 	<input type="text" name="">
+<input type="text" name="">
+<input type="button" name="" value="替换">
+
+<div id='txt'>
+	<p>
+		妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法
+	</p>
+</div>
+ -->
+
+	<script type="text/javascript">
+		window.onload=function(){
+
+			// var btn =document.getElementsByTagName('input');
+			// var div1=document.getElementById('div1');
+			// function detectchat(str){
+			// 	var n=0
+			// 	for(var i=0;i<str.length;i++){
+			// 		n=str.charCodeAt(i);
+			// 		if(n<48||n>57){
+			// 			return false
+			// 		}
+			// 		return true
+			// 	}
+			// }
+			// // alert(detectchat('1234'))
+			// btn[1].onclick=function(){
+			// 	var val=btn[0].value;
+			// 	if(detectchat(val)){
+			// 		alert('这是数字')
+			// 	}else{
+			// 		alert('输入有误')
+			// 	}
+			// }
+
+			
+/*			btn[1].onclick=function(){
+
+			var val=btn[0].value;
+			var str='';
+			for(var i=0;i<val.length;i++){
+				str+=String.fromCharCode(val.charCodeAt(i)-10000)+':'
+			}
+				// alert(str)
+				div1.innerHTML=str;
+			}
+*/
+
+/*			var str='妙味课堂十一个独居特设的培训ad团队，妙味繁多传统的教育方式和理念，妙味会提供一个全新的快乐的学习方法';
+			// alert(str.indexOf('妙味',2))
+			var i='妙味'
+			var n=i.length;
+			for(;str.indexOf(i,n)!=-1;){
+				alert(str.indexOf(i,n))
+				n=str.indexOf(i,n)+n;
+			}
+*/
+
+			var txt=document.getElementById('txt');
+			var op=txt.getElementsByTagName('p')[0];
+			var ospan=op.getElementsByTagName('span')[0];
+			var oa=op.getElementsByTagName('a')[0];
+			var str=ospan.innerHTML;
+			var off=true;
+			oa.onclick=function(){
+				if(off){
+				ospan.innerHTML=str.substring(0,18);
+				oa.innerHTML='展开';
+
+				}else{
+					ospan.innerHTML=str;
+					oa.innerHTML='收缩'
+
+				}
+				off=!off;
+
+			}
+
+
+
+		var str='www.miaovcom';
+		// alert(str.split('.'))
+		// alert(str.split(''));
+		var str1='妙味课堂';
+		alert(str1.split('味'));
+		// alert(str1.split());
+		alert(typeof str1.split());
+		var str2='/www.baidu.com/'
+		alert(str2.split('/'));  //[,www.baidu.com,]
+
+		var str3='2017-8-18-9-15'
+		alert(str3.split('-',3));
+
+
+/*	acolor=['red','blue','yellow','pink'];
+	var val=document.getElementById('val');
+	var txt=document.getElementById('txt');
+	var btn=document.getElementById('btn');
+	btn.onclick=function(){
+		var str=val.value;
+		var arr=str.split('');
+		for(var i=0;i<arr.length;i++){
+			arr[i]='<span style="background:'+acolor[i%acolor.length]+'">'+arr[i]+'</span>';
+			
+		}
+		str1=arr.join('');
+		txt.innerHTML=str1;
+
+	}*/
+    
+
+/*    var abtn=document.getElementsByTagName('input');
+    var txt=document.getElementById('txt');
+    var op=txt.getElementsByTagName('p')[0];
+    abtn[2].onclick=function(){
+    	var str=abtn[0].value;
+    	var newstr=abtn[1].value;
+    	if(!str){
+    		return false
+    	}else{
+    	op.innerHTML=op.innerHTML.split(str).join('<span>'+newstr+'</span>');
+    	}
+    }
+*/
+
+
+		}
+	</script>
+</body>
+</html>

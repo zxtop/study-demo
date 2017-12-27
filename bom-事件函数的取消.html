@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			第一种事件绑定形式的取消
+		*/
+		function fn1(){
+			alert(1);
+		}
+		function fn2(){
+			alert(2);
+		}
+		document.onclick=fn1;
+		document.onclick=null;//取消
+
+
+		/*
+			第二种
+			ie:obj.detachEvent(事件名称，事件函数)
+			标准：obj.removeEventListener(事件名称，事件函数，是否捕获)；
+		*/
+
+		document.attachEvent('click',fn1)
+		document.attachEvent('click',fn2)
+		document.detachEvent('click',fn1)
+
+		document.addEventListener('click', fn1, false);
+document.addEventListener('click', fn1, true);
+document.addEventListener('click', fn2, false);
+
+document.removeEventListener('click', fn1, false);
+
+	</script>
+</body>
+</html>
